@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" href="style.css" />
+
+  <title>Digital Clock</title>
+</head>
+
+<body onload="startTime()">
+  <div class="card">
+    <div class="clock">
+      <span class="hours"></span> :
+      <span class="minutes"></span> :
+      <span class="seconds"></span>
+      <span class="ampm"></span>
+    </div>
+  </div>
+
+  <script>
+
+    // Set interval to update the time every second
+    setInterval(startTime, 1000);
+
+    // Function to update the time
+    function startTime() {
+      // Get the current date and time
+      const currentDate = new Date();
+
+      // Get the formatted time string
+      let time = currentDate.toLocaleTimeString();
+
+      // Split the time string into time and notation (AM/PM)
+      let [timeString, notation] = time.split(" ");
+
+      // Split the time string into hours, minutes, and seconds
+      let [hour, minute, second] = timeString.split(":");
+
+      // Update the respective elements in the HTML with the current time values
+      document.querySelector(".hours").textContent = hour;
+      document.querySelector(".minutes").textContent = minute;
+      document.querySelector(".seconds").textContent = second;
+      document.querySelector(".ampm").textContent = notation;
+    }
+
+  </script>
+</body>
+
+</html>
